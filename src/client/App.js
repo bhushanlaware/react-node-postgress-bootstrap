@@ -11,6 +11,7 @@ import AppBar from "./Components/AppBar";
 import Home from "./Containers/Home";
 import * as serviceWorker from "./serviceWorker";
 import BluePink from "./Themes/BluePink";
+import CyonYellow from "./Themes/CyonYellow";
 import VehicleActivity from "./Containers/VehicleActivity";
 import PlaceInteractions from "./Containers/PlaceInteractions";
 import { DirectionsCar, Home as HomeIcon, LocationOnSharp } from "@material-ui/icons";
@@ -26,7 +27,7 @@ function App() {
       createMuiTheme({
         palette: {
           type: darkMode ? "dark" : "light",
-          ...BluePink,
+          ...CyonYellow,
         },
       }),
     [darkMode]
@@ -116,7 +117,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppBar title={"My Cars"} changeTheme={changeTheme} isDark={darkMode}></AppBar>
+      <AppBar title={"My Tracker"} changeTheme={changeTheme} isDark={darkMode}></AppBar>
       <Container style={{ marginTop: "10px" }}>
         <Router>
           <Switch>

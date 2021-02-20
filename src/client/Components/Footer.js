@@ -5,15 +5,15 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 
 
-// function Copyright() {
-//   return (
-//     <Typography variant="body2" color="textSecondary">
-//       {"Copyright © "}
-//       {new Date().getFullYear()}
-//       {"."}
-//     </Typography>
-//   );
-// }
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary">
+      {"Copyright © "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
+  );
+}
 function Support() {
   return (
     <Typography variant="subtitle2">
@@ -45,9 +45,9 @@ export default function StickyFooter() {
           <Grid item xs={12} className={classes.center}>
             <Support />
           </Grid>
-          {/* <Grid item xs={12} className={classes.center}>
+          <Grid item xs={12} className={classes.center}>
             <Copyright />
-          </Grid> */}
+          </Grid>
         </Grid>
       </Container>
     </footer>
