@@ -11,6 +11,7 @@ import AppBar from "./Components/AppBar";
 import Home from "./Containers/Home";
 import * as serviceWorker from "./serviceWorker";
 import BluePink from "./Themes/BluePink";
+import RedBlue from "./Themes/RedBlue";
 import CyonYellow from "./Themes/CyonYellow";
 import VehicleActivity from "./Containers/VehicleActivity";
 import PlaceInteractions from "./Containers/PlaceInteractions";
