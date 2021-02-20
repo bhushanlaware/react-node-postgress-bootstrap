@@ -13,10 +13,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Track.init({
-    lat: DataTypes.NUMBER,
+    lat: DataTypes.STRING,
     lon: DataTypes.STRING,
-    time: DataTypes.TIME,
-    vehicleId: DataTypes.NUMBER
+    time: DataTypes.DATE,
+    vehicleId: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Track',

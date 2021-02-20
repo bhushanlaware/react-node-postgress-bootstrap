@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       lat: {
-        type: Sequelize.NUMERIC
+        type: Sequelize.STRING
       },
       lon: {
         type: Sequelize.STRING
@@ -18,7 +18,7 @@ module.exports = {
         type: Sequelize.DATE
       },
       vehicleId: {
-        type: Sequelize.NUMERIC
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
