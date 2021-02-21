@@ -18,7 +18,7 @@ module.exports = {
         type: Sequelize.DATE
       },
       vehicleId: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

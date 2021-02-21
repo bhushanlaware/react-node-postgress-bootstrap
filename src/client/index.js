@@ -8,11 +8,11 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import "./index.css";
 import { Provider } from 'react-redux';
-import configureStore from './store';
+import configureStore from './store/index';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={configureStore}>
+    <Provider store={configureStore()}>
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <SnackbarProvider
           anchorOrigin={{

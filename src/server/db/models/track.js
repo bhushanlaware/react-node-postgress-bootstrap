@@ -10,18 +10,17 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      // this.hasOne(models.vehicle, {
-      //   as: "vehicle",
-      //   foreignKey: "vehicleId",
-      //   onDelete: "cascade",
-      // });
+      this.belongsTo(models.Vehicle, {
+        as: 'vehicle',
+        foreignKey: 'vehicleId'
+      })
     }
   };
   Track.init({
     lat: DataTypes.STRING,
     lon: DataTypes.STRING,
     time: DataTypes.DATE,
-    vehicleId: DataTypes.STRING
+    vehicleId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Track',

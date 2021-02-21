@@ -3,7 +3,8 @@ const express = require('express');
 const router = express.Router();
 
 const routes = [
-  require('./vehicles'),
+  require('./vehiclesRoutes'),
+  require('./tracksRoutes'),
 ];
 
 router.use('/', routes);

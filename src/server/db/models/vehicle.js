@@ -10,6 +10,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.hasMany(models.Track, {
+        as: "track",
+        foreignKey: "vehicleId",
+        onDelete: "cascade",
+      });
     }
   };
   Vehicle.init({

@@ -1,5 +1,5 @@
 const express = require('express');
-const vehicleService = require('../services/vehicles')
+const vehicleService = require('../services/vehiclesServices')
 const router = express.Router();
 /* GET users listing. */
 router.get('/getAll', async (req, res, next) => {
