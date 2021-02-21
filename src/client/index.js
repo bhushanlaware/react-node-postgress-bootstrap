@@ -7,20 +7,23 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import "./index.css";
-
+import { Provider } from 'react-redux';
+import configureStore from './store';
 
 ReactDOM.render(
   <React.StrictMode>
-    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-      <SnackbarProvider
-        anchorOrigin={{
-          vertical: "top",
-          horizontal: "center",
-        }}
-      >
-        <App />
-      </SnackbarProvider>
-    </MuiPickersUtilsProvider>
+    <Provider store={configureStore}>
+      <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        <SnackbarProvider
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "center",
+          }}
+        >
+          <App />
+        </SnackbarProvider>
+      </MuiPickersUtilsProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );
