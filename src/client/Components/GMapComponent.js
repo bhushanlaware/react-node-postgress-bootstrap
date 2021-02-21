@@ -1,13 +1,12 @@
 import { LineStyle } from '@material-ui/icons';
 import React from 'react';
 import { GoogleMap, withGoogleMap, withScriptjs, Marker, Polyline } from 'react-google-maps';
-
 const MapComponent = withScriptjs(withGoogleMap((props =>
     <GoogleMap
         defaultZoom={8}
         center={props.position}
     >
-        {props.polyline && <Polyline path={props.polyline && props.polyline.slice(0, 125)}
+        {props.polyline && <Polyline path={props.polyline && props.polyline.slice(0, 120)}
             geodesic={true}
             options={{
                 strokeColor: "#ffc400",
