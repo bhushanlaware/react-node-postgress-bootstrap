@@ -1,10 +1,7 @@
 const express = require('express');
-const vehicleService = require('../services/vehiclesServices')
+const vehicleController = require('../controllers/vehicleController')
 const router = express.Router();
 /* GET users listing. */
-router.get('/getAll', async (req, res, next) => {
-  const result = await vehicleService.getAllVehicles();
-  res.send(result);
-});
+router.get('/get_all_vehicles', vehicleController.getAllVehicles);
 
 module.exports = router;

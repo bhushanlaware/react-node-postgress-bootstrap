@@ -71,6 +71,7 @@
     "react-quill": "^1.3.5",
     "react-rich-text-editor": "^2.1.2",
     "react-router-dom": "^5.2.0",
+    "react-select": "^4.1.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "resolve": "1.15.0",
@@ -94,6 +95,7 @@
   },
   "proxy": "http://localhost:4000/",
   "scripts": {
+    "init": "npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "node scripts/start.js",

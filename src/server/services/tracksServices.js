@@ -17,7 +17,19 @@ const getVehiclesForTime = async (startTime, endTime) => {
     // console.log(products)
     return vehicleTracks;
 };
-
+const getVehicleActivity = async (vehicleId, startDate, endDate) => {
+    const vehicles = await Track.findAll({
+        where: {
+            vehicleId,
+            time: {
+                [Op.and]: { [Op.gte]: startDate, [Op.lte]: endDate }
+            }
+        }
+    });
+    // console.log(products)
+    return vehicles;
+};
 module.exports = {
-    getVehiclesForTime
+    getVehiclesForTime,
+    getVehicleActivity,
 }

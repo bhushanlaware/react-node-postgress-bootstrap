@@ -20,7 +20,7 @@ const TrackReducer = (state = { tracksDetails: [] }, action) => {
     case actionTypes.SERVICE_ERROR:
       return {
         ...state,
-        userDetails: action.data,
+        userDetails: [],
         error: action.error,
         isLoading: false,
       };

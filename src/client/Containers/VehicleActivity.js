@@ -4,27 +4,47 @@ import { KeyboardDatePicker } from '@material-ui/pickers';
 import React, { Component } from 'react';
 import GMapComponent from '../Components/GMapComponent';
 import PageHeader from '../Components/PageHeader';
-
+import ReactSelect from '../Components/ReactSelect';
+import { getAllVehicles, getVehicleTrackRecord } from '../store/actions/vehiclesActions';
+import { connect } from 'react-redux';
 class VehicleActivity extends Component {
 	state = {
 		startDate: null,
+		license: null,
 		endDate: null,
+	}
+	componentDidMount = () => {
+		this.props.getAllVehicles().then();
+	}
+	handleSearch = () => {
+		const { startDate, endDate, license } = this.state;
+		startDate
+			&& endDate
+			&& license
+			&& this.props.getTrackRecord(this.state.license.id, startDate, endDate);
 	}
 	render() {
 		return <>
-			<PageHeader 
-      title={"Vehicle Activity"}
-       icon={<DirectionsCar></DirectionsCar>}
-       links={this.props.menu&& this.props.menu.filter(x=>x.url!=='/place-interactions')}
-       ></PageHeader>
+			<PageHeader
+				title={"Vehicle Activity"}
+				icon={<DirectionsCar></DirectionsCar>}
+				links={this.props.menu && this.props.menu.filter(x => x.url !== '/place-interactions')}
+			></PageHeader>
 			<Paper elevation={0}>
 				<Box p={2}>
 					<Grid container>
 						<Grid item xs={12}>
 							<Box p={1}>
 								<Grid container spacing={2}>
-									<Grid item>
-										<TextField variant='outlined' size='small' label='Licence number' type='number'></TextField>
+									<Grid item xs={3}>
+										{/* <TextField variant='outlined' size='small' label='Licence number' type='number'></TextField> */}
+										<ReactSelect
+											placeholder="Select License."
+											isMulti={false}
+											options={this.props.vehicles.map(x => ({ ...x, value: x.id, label: x.license }))}
+											value={this.state.license}
+											onChange={v => this.setState({ license: v })}
+										/>
 									</Grid>
 									<Grid item>
 										<KeyboardDatePicker
@@ -55,6 +75,7 @@ class VehicleActivity extends Component {
 											variant='contained'
 											color='primary'
 											startIcon={<Search></Search>}
+											onClick={this.handleSearch}
 										>
 											Search
 									</Button>
@@ -63,12 +84,19 @@ class VehicleActivity extends Component {
 							</Box>
 						</Grid>
 						<Grid item xs={12}>
-							<GMapComponent position={{ lat: -34.397, lng: 150.644 }} ></GMapComponent>
+							<GMapComponent position={{ lat: -14.397, lng: 150.644 }} polyline={this.props.vehicleTrack}></GMapComponent>
 						</Grid>
 					</Grid>
 				</Box>
 			</Paper></>
 	}
 }
-
-export default VehicleActivity;
+const mapStateToProps = (state) => ({ 
+	vehicles: state.VehicleReducer.vehicles || [],
+	vehicleTrack: state.VehicleReducer.vehicleTrack || [],
+ });
+const mapDispatchToProps = (dispatch) => ({
+	getAllVehicles: () => dispatch(getAllVehicles()),
+	getTrackRecord: (id, startDate, endDate) => dispatch(getVehicleTrackRecord(id, startDate, endDate)),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(VehicleActivity);

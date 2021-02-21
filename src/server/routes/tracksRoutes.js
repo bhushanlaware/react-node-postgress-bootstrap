@@ -5,8 +5,10 @@ const router = express.Router();
 /* GET tracks listing. */
 router.get(
   '/place_interactions',
-  // tracksValidator.tracksSearchValidator,
   tracksControllers.getVehiclesForTime,
 );
+router.get('/vehicle_activity',
+  tracksControllers.getVehicleActivity);
+
 
 module.exports = router;
