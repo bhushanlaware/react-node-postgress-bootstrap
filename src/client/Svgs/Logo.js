@@ -1,0 +1,8 @@
+import React from 'react';
+const Logo = ({ primaryColor, secondaryColor }) => {
+  return (
+    <svg width="40" height="30" viewBox="0 0 800 600" id="svgcontent" x="447.5" y="152.5" xmlns="http://www.w3.org/2000/svg" xmlnsSe="http://svg-edit.googlecode.com" xmlnsXlink="http://www.w3.org/1999/xlink"><defs><linearGradient id="svg_10" x1="0" y1="0.33984375" x2="1" y2="0"><stop stop-color={primaryColor} stop-opacity="0.99609375" offset="0"></stop><stop stop-color={secondaryColor} stop-opacity="0.99609375" offset="1"></stop></linearGradient><linearGradient id="svg_11" x1="0" y1="0.33984375" x2="1" y2="0"><stop stop-color={primaryColor} stop-opacity="0.99609375" offset="0.0234375"></stop><stop stop-color={secondaryColor} stop-opacity="0.99609375" offset="1"></stop></linearGradient></defs><g id="Layer_1" style={{ "pointer-events": "all" }}><title style={{ "pointer-events": "inherit" }}>Layer 1</title><rect fill="url(#svg_10)" stroke-width="0" stroke-dasharray="null" stroke-opacity="null" opacity="undefined" x="82.83088500329437" y="58.23997358700754" width="547.7034332072473" height="137.26416386375163" id="svg_2" transform="rotate(-6 356.68261718749994,126.87205505371107) " stroke="#000" rx="80"></rect><rect fill="url(#svg_11)" stroke-width="0" stroke-dasharray="null" stroke-opacity="null" opacity="undefined" x="101.93206393222694" y="224.8310409561257" width="376.9349656959445" height="137" id="svg_4" transform="rotate(-6 290.39956665039034,293.3310546874999) " rx="80" stroke="#000"></rect><ellipse fill="url(#svg_11)" stroke="#000" stroke-width="0" stroke-dasharray="null" stroke-opacity="null" opacity="undefined" cx="212" cy="483" id="svg_8" rx="91.5" ry="92"></ellipse></g></svg>
+  );
+}
+
+export default Logo;

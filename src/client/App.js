@@ -1,21 +1,11 @@
 import { Button, Container, CssBaseline } from "@material-ui/core";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import { dark } from "@material-ui/core/styles/createPalette";
 import { useSnackbar } from "notistack";
 import React, { Fragment, useEffect, useState } from "react";
-import {
-  BrowserRouter as Router,
-  Redirect,
-  Route, Switch
-} from "react-router-dom";
 import AppBar from "./Components/AppBar";
-import Home from "./Containers/Home";
 import * as serviceWorker from "./serviceWorker";
-import BluePink from "./Themes/BluePink";
-import RedBlue from "./Themes/RedBlue";
-import CyonYellow from "./Themes/CyonYellow";
-import VehicleActivity from "./Containers/VehicleActivity";
-import PlaceInteractions from "./Containers/PlaceInteractions";
-import { DirectionsCar, Home as HomeIcon, LocationOnSharp } from "@material-ui/icons";
+import GreenYellow from "./Themes/GreenYellow";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -28,8 +18,13 @@ function App() {
       createMuiTheme({
         palette: {
           type: darkMode ? "dark" : "light",
-          ...CyonYellow,
+          ...GreenYellow,
+          background: {
+            paper: darkMode ? "#222b45" : "white",
+            default: darkMode ? "#1a2138" : "#f7f9fc"
+          }
         },
+
       }),
     [darkMode]
   );
@@ -55,7 +50,6 @@ function App() {
   };
 
   const refreshAction = (key) => {
-    //render the snackbar button
     return (
       <Fragment>
         <Button
@@ -75,59 +69,21 @@ function App() {
 
   useEffect(() => {
     let dmode = localStorage.getItem("darkMode");
-
-    // if (dmode == undefined) {
-    //   dmode = false;
-    //   localStorage.setItem("darkMode", dmode);
-    // }
     dmode === "false" ? setDarkMode(false) : setDarkMode(true);
   }, []);
 
-  // useEffect(() => {
-  //   window["isUpdateAvailable"].then((isAvailable) => {
-  //     if (isAvailable) {
-  //       window.location.href = "/";
-  //     }
-  //   });
-  // }, []);
+
   const changeTheme = () => {
     localStorage.setItem("darkMode", !darkMode);
     setDarkMode(!darkMode);
   };
-  const menu = [
-    {
-      title: 'Home',
-      url: '/',
-      icon: <HomeIcon />,
-      component: Home,
-    },
-    {
-      title: 'Place Interactions',
-      url: '/place-interactions',
-      icon: <LocationOnSharp />,
-      component: PlaceInteractions,
-    },
-    {
-      title: 'Vehicle Activity',
-      url: '/vehicle-activity',
-      icon: <DirectionsCar />,
-      component: VehicleActivity,
-    }
-  ]
-  const getComopnent = (C) => <C menu={menu.map(x => ({ ...x, component: null }))}></C>
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppBar title={"My Tracker"} changeTheme={changeTheme} isDark={darkMode}></AppBar>
-      <Container style={{ marginTop: "10px" }}>
-        <Router>
-          <Switch>
-            {menu.map(x =>
-              <Route path={x.url} exact render={() => getComopnent(x.component)} ></Route>
-            )}
-            <Redirect from='*' to='/'></Redirect>
-          </Switch>
-        </Router>
+      <AppBar title={"Faver"} changeTheme={changeTheme} isDark={darkMode}></AppBar>
+      <Container>
+
       </Container>
     </ThemeProvider>
   );
